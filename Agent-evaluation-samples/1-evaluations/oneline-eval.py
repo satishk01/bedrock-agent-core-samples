@@ -23,7 +23,7 @@ agentcore_client = boto3.client(
     region_name=region
 )
 
-agent_arn = "arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-bGkU1WENqY"
+agent_arn = "arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-9tl3F0FgeM"
 
 
 def invoke_agent_runtime(agent_arn, prompt):

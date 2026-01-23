@@ -22,6 +22,8 @@ if not USE_IPYTHON:
 boto_session = Session()
 region = boto_session.region_name
 print(f"Region: {region}")
+agent_arn='arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-9tl3F0FgeM'
+agent_id='ac_eval_strands2-9tl3F0FgeM'
 
 # Create clients
 eval_client = Evaluation(region=region)
@@ -35,7 +37,7 @@ print(f"\nInvoking agent with session ID: {session_id_strands}")
 
 # Invoke agent
 response = client.invoke_agent_runtime(
-    agentRuntimeArn='arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-MTw9laHKVK',
+    agentRuntimeArn=agent_arn,
     runtimeSessionId=session_id_strands,
     payload=payload,
 )
@@ -47,7 +49,7 @@ print(f"Agent Response: {response_data}\n")
 # Second invocation - weather question
 payload = json.dumps({"prompt": "What is the weather now?"})
 response = client.invoke_agent_runtime(
-    agentRuntimeArn='arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-MTw9laHKVK',
+    agentRuntimeArn=agent_arn,
     runtimeSessionId=session_id_strands,
     payload=payload,
 )
@@ -59,7 +61,7 @@ print(f"Agent Response: {response_data}\n")
 # Third invocation - capital question
 payload = json.dumps({"prompt": "Can you tell me the capital of the US?"})
 response = client.invoke_agent_runtime(
-    agentRuntimeArn='arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-MTw9laHKVK',
+    agentRuntimeArn=agent_arn,
     runtimeSessionId=session_id_strands,
     payload=payload,
 )
@@ -94,19 +96,19 @@ for attempt in range(1, max_retries + 1):
         
         # Run all evaluations
         goal_sucess_results = eval_client.run(
-            agent_id='ac_eval_strands2-MTw9laHKVK',
+            agent_id=agent_id,
             session_id=session_id_strands, 
             evaluators=["Builtin.GoalSuccessRate"]
         )
         
         correctness_results = eval_client.run(
-            agent_id='ac_eval_strands2-MTw9laHKVK',
+            agent_id=agent_id,
             session_id=session_id_strands, 
             evaluators=["Builtin.Correctness"]
         )
         
         parameter_results = eval_client.run(
-            agent_id='ac_eval_strands2-MTw9laHKVK',
+            agent_id=agent_id,
             session_id=session_id_strands, 
             evaluators=["Builtin.ToolParameterAccuracy", "Builtin.ToolSelectionAccuracy"]
         )

@@ -9,7 +9,7 @@ boto_session = Session()
 region = boto_session.region_name
 print(region)
 
-agent_id="ac_eval_strands2-bGkU1WENqY" 
+agent_id="ac_eval_strands2-9tl3F0FgeM" 
 
 eval_client = Evaluation(region=region)
 

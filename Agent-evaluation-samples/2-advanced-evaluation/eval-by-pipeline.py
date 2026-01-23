@@ -38,8 +38,8 @@ if not USE_IPYTHON:
 
 # Configuration - UPDATE THESE VALUES
 region = "us-east-1"
-agent_id = "ac_eval_strands2-5clLmtB4pH"  # UPDATE: Your agent ID
-agent_arn = "arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-5clLmtB4pH"  # UPDATE: Your agent ARN
+agent_id = "ac_eval_strands2-kbwmZfG9EB"  # UPDATE: Your agent ID
+agent_arn = "arn:aws:bedrock-agentcore:us-east-1:319645399632:runtime/ac_eval_strands2-kbwmZfG9EB"  # UPDATE: Your agent ARN
 
 print(f"Region: {region}")
 print(f"Agent ID: {agent_id}\n")
